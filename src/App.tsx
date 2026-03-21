@@ -353,6 +353,64 @@ export default function App() {
     drawDataRow("Escala Borg", `${results.borgScale} / 10`, yPos); yPos += 8;
     drawDataRow("Fecha", results.timestamp, yPos); yPos += 20;
     
+    // Section: Desglose de las Balizas
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.text("DESGLOSE DE LAS BALIZAS", margin, yPos);
+    yPos += 2;
+    doc.setDrawColor(16, 185, 129); // Emerald-500
+    doc.line(margin, yPos, margin + 70, yPos);
+    yPos += 10;
+
+    // Table Header
+    const col1Width = 60;
+    const col2Width = 60;
+    
+    doc.setFillColor(16, 185, 129); // Emerald-500
+    doc.rect(margin, yPos, contentWidth, 10, "F");
+    
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(10);
+    doc.text("Descripción de la Baliza", margin + 5, yPos + 7);
+    doc.text("Código ingresado", margin + col1Width + 5, yPos + 7);
+    doc.text("Resultado", margin + col1Width + col2Width + 5, yPos + 7);
+    
+    yPos += 10;
+    doc.setTextColor(31, 41, 55);
+    doc.setFont("helvetica", "normal");
+
+    balizaCodes.forEach((code, index) => {
+      // Alternating background
+      if (index % 2 === 1) {
+        doc.setFillColor(249, 250, 251); // Gray-50
+        doc.rect(margin, yPos, contentWidth, 8, "F");
+      }
+      
+      const isCorrect = normalizeString(code) === normalizeString(selectedRoute.codes[index]);
+      
+      doc.text(`Baliza ${index + 1}`, margin + 5, yPos + 6);
+      doc.text(code || "-", margin + col1Width + 5, yPos + 6);
+      
+      if (isCorrect) {
+        doc.setTextColor(16, 185, 129); // Green
+        doc.text("Acertado", margin + col1Width + col2Width + 5, yPos + 6);
+      } else {
+        doc.setTextColor(220, 38, 38); // Red
+        doc.text("Fallado", margin + col1Width + col2Width + 5, yPos + 6);
+      }
+      
+      doc.setTextColor(31, 41, 55);
+      yPos += 8;
+      
+      // Check for page break
+      if (yPos > pageHeight - margin - 20) {
+        doc.addPage();
+        yPos = margin;
+      }
+    });
+    
+    yPos += 15;
+
     // Section: Recorrido Realizado (Map)
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
