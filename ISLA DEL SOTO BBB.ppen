@@ -1,0 +1,358 @@
+﻿<course-scribe-event>
+  <event id="1">
+    <title>ISLA DEL SOTO BBB</title>
+    <map kind="OCAD" scale="10000" ignore-missing-fonts="false" absolute-path="C:\Users\Jose Carlos\Downloads\mapant.omap">mapant.omap</map>
+    <standards map="2017" description="2018" />
+    <all-controls print-scale="5000" description-kind="symbols" />
+    <print-area automatic="true" restrict-to-page-size="true" left="0" top="0" right="0" bottom="0" page-width="1169" page-height="1654" page-margins="0" page-landscape="true" />
+    <numbering start="31" disallow-invertible="true" />
+    <punch-card rows="3" columns="8" left-to-right="true" top-to-bottom="false" />
+    <course-appearance control-circle-size-ratio="1.02803743" line-width-ratio="1.02857149" center-dot-diameter="1.19" number-size-ratio="1.15" scale-sizes="None" scale-sizes-circle-gaps="true" number-font="Roboto" number-outline-width="0.03" auto-leg-gap-size="3.5" blend-purple="true" blend-style="blend" />
+    <descriptions lang="es" color="black" />
+    <ocad overprint-colors="false" />
+  </event>
+  <control id="1" kind="start">
+    <location x="-11.3874836" y="-11.0156794" />
+  </control>
+  <control id="2" kind="normal">
+    <code>31</code>
+    <location x="-26.80397" y="17.0822487" />
+    <description box="C" iof-2004-ref="0.3" />
+    <description box="D" iof-2004-ref="5.15" />
+    <description box="E" iof-2004-ref="6.1" />
+    <description box="F">3.5m</description>
+  </control>
+  <control id="3" kind="normal">
+    <code>32</code>
+    <location x="-24.33609" y="14.21904" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="2.4" />
+    <description box="E" iof-2004-ref="5.20" />
+    <description box="F">Talla en piedra</description>
+  </control>
+  <control id="23" kind="normal">
+    <code>33</code>
+    <location x="5.938552" y="10.5273848" />
+    <description box="C" iof-2004-ref="0.3" />
+    <description box="D" iof-2004-ref="5.15" />
+    <description box="E" iof-2004-ref="6.1" />
+    <description box="F">3,5m</description>
+  </control>
+  <control id="5" kind="normal">
+    <code>34</code>
+    <location x="-16.8231583" y="1.00637436" />
+    <description box="C" iof-2004-ref="0.3" />
+    <description box="D" iof-2004-ref="5.15" />
+    <description box="E" iof-2004-ref="6.1" />
+    <description box="F">3.5m</description>
+  </control>
+  <control id="6" kind="normal">
+    <code>35</code>
+    <location x="-6.34562874" y="25.7209816" />
+    <description box="C" iof-2004-ref="0.3" />
+    <description box="D" iof-2004-ref="5.15" />
+    <description box="E" iof-2004-ref="6.1" />
+    <description box="F">3.5m</description>
+  </control>
+  <control id="8" kind="normal">
+    <code>37</code>
+    <location x="16.0815735" y="-3.56727958" />
+    <description box="C" iof-2004-ref="0.3" />
+    <description box="D" iof-2004-ref="5.15" />
+    <description box="E" iof-2004-ref="6.1" />
+    <description box="F">3.5m</description>
+  </control>
+  <control id="9" kind="normal">
+    <code>38</code>
+    <location x="4.00973845" y="-5.63683271" />
+    <description box="C" iof-2004-ref="0.3" />
+    <description box="D" iof-2004-ref="5.15" />
+    <description box="E" iof-2004-ref="6.1" />
+    <description box="F">3.5m</description>
+  </control>
+  <control id="10" kind="normal">
+    <code>39</code>
+    <location x="-8.280275" y="-28.6440773" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="11" kind="normal">
+    <code>40</code>
+    <location x="3.67149377" y="-30.2845325" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="13" kind="normal">
+    <code>41</code>
+    <location x="14.8329859" y="-30.3362389" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="14" kind="normal">
+    <code>42</code>
+    <location x="21.8486557" y="-30.0023422" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="15" kind="normal">
+    <code>43</code>
+    <location x="31.2021523" y="-26.5202217" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="16" kind="normal">
+    <code>44</code>
+    <location x="30.3528118" y="-21.2561073" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="17" kind="normal">
+    <code>45</code>
+    <location x="25.4537048" y="-19.9675541" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="18" kind="normal" all-controls-code-angle="-149.999985">
+    <code>46</code>
+    <location x="17.8381672" y="-21.6651669" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="19" kind="normal">
+    <code>47</code>
+    <location x="10.9150505" y="-22.9883" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="20" kind="normal">
+    <code>48</code>
+    <location x="-6.452214" y="-24.3936768" />
+    <description box="C" iof-2004-ref="0.5" />
+    <description box="D" iof-2004-ref="6.2" />
+    <description box="E" iof-2004-ref="5.17" />
+    <description box="F">1,2m</description>
+  </control>
+  <control id="21" kind="finish">
+    <location x="-8.673534" y="-13.3098392" />
+    <description box="all" iof-2004-ref="14.3" />
+  </control>
+  <course id="1" kind="normal" order="1">
+    <name>Recorrido 1</name>
+    <labels label-kind="sequence" />
+    <first course-control="1" />
+    <print-area automatic="true" restrict-to-page-size="true" left="0" top="0" right="0" bottom="0" page-width="1169" page-height="1654" page-margins="0" page-landscape="true" />
+    <options print-scale="5000" hide-from-reports="false" description-kind="symbols" />
+  </course>
+  <course id="2" kind="normal" order="2">
+    <name>Recorrido 2</name>
+    <labels label-kind="sequence" />
+    <first course-control="15" />
+    <print-area automatic="true" restrict-to-page-size="true" left="0" top="0" right="0" bottom="0" page-width="1169" page-height="1654" page-margins="0" page-landscape="true" />
+    <options print-scale="5000" hide-from-reports="false" description-kind="symbols" />
+  </course>
+  <course id="3" kind="normal" order="3">
+    <name>Recorrido 3</name>
+    <labels label-kind="sequence" />
+    <first course-control="23" />
+    <print-area automatic="true" restrict-to-page-size="true" left="0" top="0" right="0" bottom="0" page-width="1169" page-height="1654" page-margins="0" page-landscape="true" />
+    <options print-scale="5000" hide-from-reports="false" description-kind="symbols" />
+  </course>
+  <course-control id="1" control="1">
+    <next course-control="9" />
+  </course-control>
+  <course-control id="2" control="21" />
+  <course-control id="11" control="2">
+    <next course-control="12" />
+  </course-control>
+  <course-control id="13" control="5">
+    <next course-control="14" />
+  </course-control>
+  <course-control id="10" control="6">
+    <next course-control="11" />
+  </course-control>
+  <course-control id="9" control="8">
+    <next course-control="31" />
+  </course-control>
+  <course-control id="12" control="3">
+    <next course-control="13" />
+  </course-control>
+  <course-control id="14" control="9">
+    <next course-control="2" />
+  </course-control>
+  <course-control id="15" control="1">
+    <next course-control="17" />
+  </course-control>
+  <course-control id="16" control="21" />
+  <course-control id="17" control="5">
+    <next course-control="18" />
+  </course-control>
+  <course-control id="18" control="3">
+    <next course-control="19" />
+  </course-control>
+  <course-control id="19" control="2">
+    <next course-control="20" />
+  </course-control>
+  <course-control id="20" control="6">
+    <next course-control="35" />
+  </course-control>
+  <course-control id="37" control="9">
+    <next course-control="16" />
+  </course-control>
+  <course-control id="36" control="8">
+    <next course-control="37" />
+  </course-control>
+  <course-control id="23" control="1">
+    <next course-control="38" />
+  </course-control>
+  <course-control id="24" control="21" />
+  <course-control id="35" control="23">
+    <next course-control="36" />
+  </course-control>
+  <course-control id="40" control="3">
+    <next course-control="41" />
+  </course-control>
+  <course-control id="41" control="5">
+    <next course-control="42" />
+  </course-control>
+  <course-control id="42" control="9">
+    <next course-control="43" />
+  </course-control>
+  <course-control id="43" control="8">
+    <next course-control="44" />
+  </course-control>
+  <course-control id="44" control="23">
+    <next course-control="24" />
+  </course-control>
+  <course-control id="31" control="23">
+    <next course-control="10" />
+  </course-control>
+  <course-control id="39" control="2">
+    <next course-control="40" />
+  </course-control>
+  <course-control id="38" control="6">
+    <next course-control="39" />
+  </course-control>
+  <special-object id="3" kind="text">
+    <text>x</text>
+    <font name="Roboto" bold="true" italic="false" />
+    <appearance color="black" />
+    <location x="-9.264607" y="-28.7559071" />
+    <location x="-8.671983" y="-29.4543571" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="4" kind="text">
+    <text>x</text>
+    <font name="Roboto" bold="true" italic="false" />
+    <appearance color="black" />
+    <location x="2.34046078" y="-27.5803185" />
+    <location x="2.80320072" y="-28.594841" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="5" kind="text">
+    <text>*</text>
+    <font name="Roboto" bold="true" italic="false" />
+    <appearance color="1.00,0.00,0.00,0.00" />
+    <location x="15.8316889" y="-28.5072021" />
+    <location x="16.5799789" y="-29.8241959" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="6" kind="text">
+    <text>x</text>
+    <font name="Roboto" bold="true" italic="false" />
+    <appearance color="black" />
+    <location x="28.4927883" y="-26.38205" />
+    <location x="28.9417648" y="-27.6391811" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="7" kind="text">
+    <text>x</text>
+    <font name="Roboto" bold="true" italic="false" />
+    <appearance color="black" />
+    <location x="24.4220486" y="-19.5576229" />
+    <location x="24.9009571" y="-20.6351643" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="8" kind="text">
+    <text>x</text>
+    <font name="Roboto" bold="true" italic="false" />
+    <appearance color="black" />
+    <location x="16.8492889" y="-20.3657761" />
+    <location x="17.44792" y="-21.8922939" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="22" kind="image">
+    <text>arbolorientacion-removebg-preview.png</text>
+    <image-data format="png">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</image-data>
+    <location x="-5.959341" y="-23.8350925" />
+    <location x="-5.22403336" y="-24.5450459" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="24" kind="image">
+    <text>arbolorientacion-removebg-preview(2).png</text>
+    <image-data format="png">iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcCAYAAACdz7SqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAYuSURBVEhL7ZZ9bBvlHcfDJgbTmGCteJsm1G2atk5CSEiDEde+872fz2f78t44aRpo2YCtFWtU0rqMpJPCXqR1GWuS2vHL3dlnu05TNiC0qQptqlKSQDdaRkppXkrcxkmatGmaFdDGdzpPVPONhoy/9sc+fz13z/f7++qee57fXVHR//lfoLF7s79m1+pkWbtyqryjNOvfWTnkb6v48zq9Xm850uLuQc9NVs/nom0wwlQHa99VQj4IYQGMyoHSBFAqDz4qwq264YqJ8Koy3H+Q0LC3oWXf+L5l1jpL5vF0w2tViTpIugwuKYBKMSDSLMjdApwpNyhNBBFhQKk0BEOArLvh7pBRubN6qPPNqGyt95msDq+bkLQyPBCyw2Y4QGacIFI0bDEKthADOuKFrFbA1AhxGY6wE44QCY/hgy9SuqD8vnxux8HWhiyyy8cx/mVr/WsAuOmN2eFb10Qfg9CpgEnLsCcp2A0CTs0JLiKgXK/Cxpc2o/nQrz5ofLEJ9drjENt88CXKIGgSHCEK3qQCMSijZlct4ifjm+Ywt2wKU7dY84qmgFuGkF3+1J+asmJIgWB44EywoHQGXl3+uC5RA+M9TT2P4XsmMLFiEpPfmsKVu8YwtvLV2SNPbXvlF0e8oVJIuhfOCA0+LkLsEFEXXoO+qb6tl3F5uTWzyLwZfyfdXhGpAadJIFUKnC5ACAp45uDPLxy/OrB9HvO3W30mM5j5xjsYk1Ln9j5nBjOqANbg/24GeyPeD5t6mk6OYOQBAF+8Zsoh95X38d63N2Q2gmln/7VpVBpKTEGgZ9s/TuPMhoKU6zCCbFn725FESaISQlI6w2cEkEFyoDxY0f3qzOGNBeJRjN58+Hxvf2W4DHyCB6GTEA0J/lgd+i72HwVwY4FhEYYxXr1p35ZZKsiMcRn+ZWeCghiSNv32WGuFOQ/gC3kh8MaNan/7ghLxQEgLcMRJuOIyAj1NyOGix1p4MSYw7eyZOrCDf046zRhcgE6zYOKuex821pea89eW2Bw827MdUtSFYt0BKsNBVGV0nX3hxMR13uNiTGBOrIuu38+o0k9tcQJskl3rCXnYAhGAG7Z2BcCqHvwg7oBzjwBR82Hwo7fOzmL2ngLxEpjGwv1buprb3FrpesKgW+xJ59NsTLQViMwz1JBqhJgoAZHh8MM4AUlTMPDRX0Yu44PvFoiXwBTmvtPS+7tmWSuvtRu0r9ggA0q3UnhkhnGW2fb8M/nldWgE2DQHPijg9auDQxcwv7JAvARyyH3zZ5nNTVTUU25Lu54kurz/2RLPYdqz41ArfJoPjpgdXIbN99vI29qHOVyirfrPYghDK1aH/AFeL7mb2O0+a53Pk8Olrc+PvnTMG1bg0EjYUnaQcQaP7X0S72Jcs+oX4wom70wP66Ul4ZK15vVDKgmrJs9F/K311Mcj+6rC1fkutCpph10nIHX6YIzseT+HuQetnutxEifvrNX8AaFdWCGlpToyQr9i1VzjCq7W/+bgryEHXeCTNPg0Az7M4eH4Ohye6ts/iQuM1fPvfHLoG3sbV3vTpS5zTMfYT3/KTwBw2+Cl/sCaTj/4MAM+wUBOSeB2clgbrsfuoa6jWWTXTGLyvmlM3222TgA3A/iSeeTM0Cf+uKGKCbvyncehs5CNkh9ZcwowjTOY+X77QPCFCq0KTISDKy3nl9sd9cK3qwRPZDYgelrdcwz9dQMYIF6ePbAqdT61svn15lJ/t399ccheU4SiG6i97gSfVk5ZMz4V8ysyigni6d7tfy2JVoINi6DzvyYs+LgEb1yBKyyBaxcgdcoLHl3pFjT3s1yCe4QwaJbM0G57mgadlAattRdlHvN3DGGU/+Wh1l7vzgpIUQV0jAcRI+BM0DNMissyCSbnTNBjTIp5k+rizth3O7EqTcLss3zCVWutuSQWsPD1MUw+FHkr2eaP1Z/zqMqokHBNC10ihG4BpEHCptpg1+1wJCkUxwk4DTZNRsnbrLX+KwB81fxDOH71OL2lJxCsTlbtoTqI/Y6O4j5BZ/rcSbHbFRda6E7O54qW32X1f27MHTmO8WUncOJrR7H/DuNy9Hstp7c/+JPDP6bqX6wpfvTAo7daPUvln44sqn2CzXupAAAAAElFTkSuQmCC</image-data>
+    <location x="-16.4203587" y="1.12580955" />
+    <location x="-15.7598763" y="0.488101959" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="21" kind="image">
+    <text>edificioorientacion3-removebg-preview.png</text>
+    <image-data format="png">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</image-data>
+    <location x="-10.07612" y="-4.00986958" />
+    <location x="-8.744257" y="-5.29147434" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="23" kind="image">
+    <text>arbolorientacion-removebg-preview(1).png</text>
+    <image-data format="png">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</image-data>
+    <location x="9.956693" y="-22.01563" />
+    <location x="10.8109493" y="-22.8404312" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="25" kind="image">
+    <text>rocagiganteorientacion-removebg-preview.png</text>
+    <image-data format="png">iVBORw0KGgoAAAANSUhEUgAAABYAAAAbCAYAAAB4Kn/lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKASURBVEhL7ZPNaxNhEMbn/dh3P5K2iTWp1F6KXgoiUY+FpdBQgoLgKXe9BClCQCiCoJekgodW8Wrx4EGQgv9BTDXopSAKOfRQEKkoGluIH7VJOjK72XTzplLbk4c+MGSzO+9vnpmdBTjUf6Glpden0+mpl8XinZv6swOrUJi9NTAQRykVAnCMxY7gzMyN+6urn4f03D2FiKxarZ513QnkjIASpbC8XwoGBpoqgrncVVxZWUmtr6/HdEaXENFGxP6FhUdvBwcTnsMAREHXVCj8n3Ky2SyWSqU0Iho6k6CxtbVPFzOZ8+22JQpudlyG3XYFE20DHF134vni4rNLiCgCqCqXX+Dw8Aiapo2cS7TMaA90NzABHSfqnQHgrdHRE+/Dbq25uXudykEIEbT7d7hhUFecumwIYWxNT1+7HQbL5eU3ectyvKRotD9w0APV4ZSjlEUjaQDwrQ40UK1WG4nH4xjAKWw70tOFXoBGB8C3Lcupj42dKutccu1MTk56Tqm9Hcd6dIMpjzGxCcA38/n8SZ3rqVgslqiGUrQVgIyxXcC9EYn0fRXC+K7zOqpUKq6U5IIOgOZ69w5sO9IE4Bvj4+51ndelRGKoAwzvsRQ2GpLmufPy2nkbQog1ndOjdHrqnb9C/gdCQAY0GtoAf/3ovl+UNwDEK6XUQ53To0Jh9rL/Nfmuwo79Iv49f4fVY/38HuLb3htnqu3a6rhmYDQFN79wMPZ2qSuZPPaR5hmaMRVqmSryQxnONwBJ27N/ZTIXnraBLQZGK+rE6oa0fwHI+kD/0Sd6/j9rfv6BCyCbUli/AWRDCutnKnXurp53INlWXz2ZPP4hdyV3Rn92qH3pD1xtR1bAJHvSAAAAAElFTkSuQmCC</image-data>
+    <location x="-14.4968262" y="3.78179264" />
+    <location x="-14.13752" y="3.340825" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="26" kind="text">
+    <text>x</text>
+    <font name="Roboto" bold="true" italic="false" />
+    <appearance color="black" />
+    <location x="-25.150322" y="16.4487534" />
+    <location x="-24.2604542" y="15.5588846" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="27" kind="image">
+    <text>rocagiganteorientacion-removebg-preview(1).png</text>
+    <image-data format="png">iVBORw0KGgoAAAANSUhEUgAAABYAAAAbCAYAAAB4Kn/lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKASURBVEhL7ZPNaxNhEMbn/dh3P5K2iTWp1F6KXgoiUY+FpdBQgoLgKXe9BClCQCiCoJekgodW8Wrx4EGQgv9BTDXopSAKOfRQEKkoGluIH7VJOjK72XTzplLbk4c+MGSzO+9vnpmdBTjUf6Glpden0+mpl8XinZv6swOrUJi9NTAQRykVAnCMxY7gzMyN+6urn4f03D2FiKxarZ513QnkjIASpbC8XwoGBpoqgrncVVxZWUmtr6/HdEaXENFGxP6FhUdvBwcTnsMAREHXVCj8n3Ky2SyWSqU0Iho6k6CxtbVPFzOZ8+22JQpudlyG3XYFE20DHF134vni4rNLiCgCqCqXX+Dw8Aiapo2cS7TMaA90NzABHSfqnQHgrdHRE+/Dbq25uXudykEIEbT7d7hhUFecumwIYWxNT1+7HQbL5eU3ectyvKRotD9w0APV4ZSjlEUjaQDwrQ40UK1WG4nH4xjAKWw70tOFXoBGB8C3Lcupj42dKutccu1MTk56Tqm9Hcd6dIMpjzGxCcA38/n8SZ3rqVgslqiGUrQVgIyxXcC9EYn0fRXC+K7zOqpUKq6U5IIOgOZ69w5sO9IE4Bvj4+51ndelRGKoAwzvsRQ2GpLmufPy2nkbQog1ndOjdHrqnb9C/gdCQAY0GtoAf/3ovl+UNwDEK6XUQ53To0Jh9rL/Nfmuwo79Iv49f4fVY/38HuLb3htnqu3a6rhmYDQFN79wMPZ2qSuZPPaR5hmaMRVqmSryQxnONwBJ27N/ZTIXnraBLQZGK+rE6oa0fwHI+kD/0Sd6/j9rfv6BCyCbUli/AWRDCutnKnXurp53INlWXz2ZPP4hdyV3Rn92qH3pD1xtR1bAJHvSAAAAAElFTkSuQmCC</image-data>
+    <location x="-26.4042015" y="17.8379421" />
+    <location x="-25.8094978" y="17.108078" />
+    <courses all="true" />
+  </special-object>
+  <special-object id="28" kind="image">
+    <text>rocagiganteorientacion-removebg-preview(2).png</text>
+    <image-data format="png">iVBORw0KGgoAAAANSUhEUgAAABYAAAAbCAYAAAB4Kn/lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKASURBVEhL7ZPNaxNhEMbn/dh3P5K2iTWp1F6KXgoiUY+FpdBQgoLgKXe9BClCQCiCoJekgodW8Wrx4EGQgv9BTDXopSAKOfRQEKkoGluIH7VJOjK72XTzplLbk4c+MGSzO+9vnpmdBTjUf6Glpden0+mpl8XinZv6swOrUJi9NTAQRykVAnCMxY7gzMyN+6urn4f03D2FiKxarZ513QnkjIASpbC8XwoGBpoqgrncVVxZWUmtr6/HdEaXENFGxP6FhUdvBwcTnsMAREHXVCj8n3Ky2SyWSqU0Iho6k6CxtbVPFzOZ8+22JQpudlyG3XYFE20DHF134vni4rNLiCgCqCqXX+Dw8Aiapo2cS7TMaA90NzABHSfqnQHgrdHRE+/Dbq25uXudykEIEbT7d7hhUFecumwIYWxNT1+7HQbL5eU3ectyvKRotD9w0APV4ZSjlEUjaQDwrQ40UK1WG4nH4xjAKWw70tOFXoBGB8C3Lcupj42dKutccu1MTk56Tqm9Hcd6dIMpjzGxCcA38/n8SZ3rqVgslqiGUrQVgIyxXcC9EYn0fRXC+K7zOqpUKq6U5IIOgOZ69w5sO9IE4Bvj4+51ndelRGKoAwzvsRQ2GpLmufPy2nkbQog1ndOjdHrqnb9C/gdCQAY0GtoAf/3ovl+UNwDEK6XUQ53To0Jh9rL/Nfmuwo79Iv49f4fVY/38HuLb3htnqu3a6rhmYDQFN79wMPZ2qSuZPPaR5hmaMRVqmSryQxnONwBJ27N/ZTIXnraBLQZGK+rE6oa0fwHI+kD/0Sd6/j9rfv6BCyCbUli/AWRDCutnKnXurp53INlWXz2ZPP4hdyV3Rn92qH3pD1xtR1bAJHvSAAAAAElFTkSuQmCC</image-data>
+    <location x="14.1016064" y="-1.33364773" />
+    <location x="14.5465126" y="-1.87966728" />
+    <courses all="true" />
+  </special-object>
+</course-scribe-event>
