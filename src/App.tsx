@@ -68,7 +68,7 @@ const ROUTES: Route[] = [
     name: "Recorrido 3", 
     balizas: 7, 
     mapUrl: "https://raw.githubusercontent.com/josecarlostejedor/ISLA-SOTO-ORIENTACION/main/Recorrido%203IS.jpg",
-    codes: ["1359-003", "1359-045", "PARQUE LA ALDEHUELA", "1359-052", "1359-040", "1359-016", "1359-010"]
+    codes: ["1359-003", "1359-045", "PARQUE LA ALDEHUELA", "1359-052", "1359-029", "1359-016", "1359-010"]
   },
   { 
     id: 4, 
@@ -162,21 +162,63 @@ export default function App() {
 
   // Timer logic
   const [elapsedTime, setElapsedTime] = useState(0);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Persistence logic - Load state
+  useEffect(() => {
+    const savedState = localStorage.getItem("orienteering_app_state");
+    if (savedState) {
+      try {
+        const state = JSON.parse(savedState);
+        if (state.userData) setUserData(state.userData);
+        if (state.screen) setScreen(state.screen);
+        if (state.selectedRouteId) {
+          const route = ROUTES.find(r => r.id === state.selectedRouteId);
+          if (route) setSelectedRoute(route);
+        }
+        if (state.startTime) setStartTime(state.startTime);
+        if (state.currentBaliza) setCurrentBaliza(state.currentBaliza);
+        if (state.balizaCodes) setBalizaCodes(state.balizaCodes);
+        if (state.endTime) setEndTime(state.endTime);
+        if (state.results) setResults(state.results);
+      } catch (e) {
+        console.error("Error loading state", e);
+      }
+    }
+  }, []);
+
+  // Persistence logic - Save state
+  useEffect(() => {
+    const state = {
+      userData,
+      screen,
+      selectedRouteId: selectedRoute?.id,
+      startTime,
+      currentBaliza,
+      balizaCodes,
+      endTime,
+      results
+    };
+    localStorage.setItem("orienteering_app_state", JSON.stringify(state));
+  }, [userData, screen, selectedRoute, startTime, currentBaliza, balizaCodes, endTime, results]);
 
   useEffect(() => {
+    let interval: number;
+    
     if (screen === "RACE" && startTime && !endTime) {
-      // Update more frequently (every 100ms) to ensure the timer feels "alive"
-      // and doesn't skip seconds due to interval drift.
-      timerRef.current = setInterval(() => {
+      // Use a more robust timer approach for mobile browsers
+      // Calculating based on absolute time difference is best
+      const updateTimer = () => {
         const now = Date.now();
-        setElapsedTime(Math.floor((now - startTime) / 1000));
-      }, 100);
-    } else {
-      if (timerRef.current) clearInterval(timerRef.current);
+        const diff = Math.floor((now - startTime) / 1000);
+        setElapsedTime(diff);
+      };
+
+      updateTimer(); // Initial call
+      interval = window.setInterval(updateTimer, 1000);
     }
+    
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      if (interval) window.clearInterval(interval);
     };
   }, [screen, startTime, endTime]);
 
@@ -188,12 +230,37 @@ export default function App() {
   };
 
   const handleStartRace = () => {
-    setStartTime(Date.now());
+    const now = Date.now();
+    setStartTime(now);
     setElapsedTime(0);
     setCurrentBaliza(1);
     setBalizaCodes([]);
     setCurrentCode("");
     setScreen("RACE");
+    
+    // Update persistence immediately
+    const state = JSON.parse(localStorage.getItem("orienteering_app_state") || "{}");
+    localStorage.setItem("orienteering_app_state", JSON.stringify({
+      ...state,
+      startTime: now,
+      screen: "RACE",
+      currentBaliza: 1,
+      balizaCodes: [],
+      elapsedTime: 0
+    }));
+  };
+
+  const handleResetApp = () => {
+    localStorage.removeItem("orienteering_app_state");
+    setUserData({ nombre: "", apellidos: "", edad: "", curso: "", grupo: "" });
+    setSelectedRoute(null);
+    setScreen("HOME");
+    setStartTime(null);
+    setEndTime(null);
+    setResults(null);
+    setBalizaCodes([]);
+    setCurrentBaliza(1);
+    setElapsedTime(0);
   };
 
   const handleNextBaliza = () => {
@@ -586,6 +653,16 @@ export default function App() {
             Continuar
             <ChevronRight className="w-5 h-5" />
           </button>
+
+          {(userData.nombre || selectedRoute) && (
+            <button 
+              onClick={handleResetApp}
+              className="w-full mt-4 py-3 text-gray-400 text-[10px] font-bold uppercase tracking-widest hover:text-red-800 transition-colors flex items-center justify-center gap-2"
+            >
+              <RefreshCcw className="w-3 h-3" />
+              Reiniciar aplicación / Borrar datos
+            </button>
+          )}
         </div>
         <Footer />
       </div>
@@ -677,12 +754,26 @@ export default function App() {
         </div>
 
         <div className="flex-1 relative bg-gray-200 overflow-hidden">
-          <QuickPinchZoom onUpdate={onUpdate} wheelScaleFactor={1000}>
+          <QuickPinchZoom 
+            key={selectedRoute?.id} // Force re-mount when route changes to fix loading/zoom issues
+            onUpdate={onUpdate} 
+            wheelScaleFactor={1000}
+            containerProps={{
+              style: {
+                width: "100%",
+                height: "100%",
+              }
+            }}
+          >
             <img 
               src={selectedRoute?.mapUrl} 
               alt="Mapa" 
               className="map-image w-full h-full object-contain"
               referrerPolicy="no-referrer"
+              onLoad={() => {
+                // Trigger a small update to ensure pinch zoom is ready
+                window.dispatchEvent(new Event('resize'));
+              }}
             />
           </QuickPinchZoom>
           <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest pointer-events-none">
@@ -708,15 +799,25 @@ export default function App() {
           <p className="text-red-800 font-bold text-sm mb-1 uppercase tracking-tight">Ingresa el código del control</p>
           
           {selectedRoute && (selectedRoute.id === 1 || selectedRoute.id === 2 || selectedRoute.id === 3) && (
-            <p className="text-[10px] text-gray-400 font-medium mb-3 italic leading-tight">
-              Bienvenidos a nuestro recorrido BUSCANDO LUCIÉRNAGAS ARTIFICIALES ENTRE ROCAS NATURALES
-            </p>
+            <div className="mb-3">
+              <p className="text-[10px] text-gray-400 font-medium italic leading-tight">
+                Bienvenidos a nuestro recorrido BUSCANDO LUCIÉRNAGAS ARTIFICIALES ENTRE ROCAS NATURALES
+              </p>
+              <p className="text-[10px] text-red-900 font-bold italic mt-1 leading-tight">
+                El formato de código que debes ingresar será del tipo 0000-000 cuando sea numérico
+              </p>
+            </div>
           )}
           
           {selectedRoute && (selectedRoute.id === 4 || selectedRoute.id === 5 || selectedRoute.id === 6) && (
-            <p className="text-[10px] text-gray-400 font-medium mb-3 italic leading-tight">
-              Bienvenidos a nuestro recorrido EN BUSCA DE LOS ÁRBOLES Y PLANTAS SINGULARES
-            </p>
+            <div className="mb-3">
+              <p className="text-[10px] text-gray-400 font-medium italic leading-tight">
+                Bienvenidos a nuestro recorrido EN BUSCA DE LOS ÁRBOLES Y PLANTAS SINGULARES
+              </p>
+              <p className="text-[10px] text-red-900 font-bold italic mt-1 leading-tight">
+                El texto a incluir son nombres de plantas o árboles
+              </p>
+            </div>
           )}
           
           <div className="flex gap-3">
