@@ -232,6 +232,7 @@ export default function App() {
   const handleStartRace = () => {
     const now = Date.now();
     setStartTime(now);
+    setEndTime(null);
     setElapsedTime(0);
     setCurrentBaliza(1);
     setBalizaCodes([]);
@@ -239,14 +240,16 @@ export default function App() {
     setScreen("RACE");
     
     // Update persistence immediately
-    const state = JSON.parse(localStorage.getItem("orienteering_app_state") || "{}");
+    const savedState = localStorage.getItem("orienteering_app_state");
+    const state = savedState ? JSON.parse(savedState) : {};
     localStorage.setItem("orienteering_app_state", JSON.stringify({
       ...state,
       startTime: now,
+      endTime: null,
       screen: "RACE",
       currentBaliza: 1,
       balizaCodes: [],
-      elapsedTime: 0
+      results: null
     }));
   };
 
@@ -741,21 +744,27 @@ export default function App() {
     };
 
     return (
-      <div className="flex flex-col h-screen bg-gray-900 overflow-hidden">
-        <div className="bg-white p-4 flex items-center justify-between shadow-md z-10">
-          <div>
-            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Recorrido</p>
-            <p className="font-bold text-gray-900">{selectedRoute?.name}</p>
+      <div className="fixed inset-0 flex flex-col bg-gray-900 overflow-hidden z-50">
+        <div 
+          className="bg-white p-4 flex items-center justify-between shadow-lg z-30 border-b border-gray-100"
+          style={{ 
+            paddingTop: 'calc(env(safe-area-inset-top, 0px) + 1rem)',
+            minHeight: 'calc(env(safe-area-inset-top, 0px) + 5rem)'
+          }}
+        >
+          <div className="flex-1">
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1">Recorrido</p>
+            <p className="font-bold text-gray-900 truncate leading-tight">{selectedRoute?.name}</p>
           </div>
-          <div className="text-right">
-            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tiempo</p>
-            <p className="font-mono text-xl font-bold text-red-800">{formatTime(elapsedTime)}</p>
+          <div className="text-right flex-1">
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1">Tiempo</p>
+            <p className="font-mono text-xl font-bold text-red-800 leading-none">{formatTime(elapsedTime)}</p>
           </div>
         </div>
 
-        <div className="flex-1 relative bg-gray-200 overflow-hidden">
+        <div className="flex-1 relative bg-gray-200 overflow-hidden z-10">
           <QuickPinchZoom 
-            key={selectedRoute?.id} // Force re-mount when route changes to fix loading/zoom issues
+            key={selectedRoute?.id} 
             onUpdate={onUpdate} 
             wheelScaleFactor={1000}
             containerProps={{
@@ -771,17 +780,16 @@ export default function App() {
               className="map-image w-full h-full object-contain"
               referrerPolicy="no-referrer"
               onLoad={() => {
-                // Trigger a small update to ensure pinch zoom is ready
                 window.dispatchEvent(new Event('resize'));
               }}
             />
           </QuickPinchZoom>
-          <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest pointer-events-none">
+          <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest pointer-events-none z-20">
             Usa dos dedos para zoom
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-t-[32px] shadow-2xl z-10">
+        <div className="bg-white p-6 rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-30 pb-[calc(env(safe-area-inset-bottom, 0px) + 1.5rem)]">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest">
               Baliza <span className="text-red-800 text-lg">{currentBaliza}</span> de {selectedRoute?.balizas}
@@ -1035,6 +1043,27 @@ export default function App() {
                 setScreen("ROUTE_SELECTION");
                 setResults(null);
                 setSubmissionStatus("IDLE");
+                setStartTime(null);
+                setEndTime(null);
+                setElapsedTime(0);
+                setBalizaCodes([]);
+                setCurrentBaliza(1);
+                setCurrentCode("");
+                
+                // Update persistence explicitly for "Nueva Carrera"
+                const savedState = localStorage.getItem("orienteering_app_state");
+                if (savedState) {
+                  const state = JSON.parse(savedState);
+                  localStorage.setItem("orienteering_app_state", JSON.stringify({
+                    ...state,
+                    screen: "ROUTE_SELECTION",
+                    results: null,
+                    startTime: null,
+                    endTime: null,
+                    currentBaliza: 1,
+                    balizaCodes: []
+                  }));
+                }
               }}
               className="bg-red-800 text-white font-bold py-4 rounded-2xl shadow-lg shadow-red-800/20 hover:bg-red-900 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
             >
