@@ -767,6 +767,7 @@ export default function App() {
             key={selectedRoute?.id} 
             onUpdate={onUpdate} 
             wheelScaleFactor={1000}
+            maxZoom={8}
             containerProps={{
               style: {
                 width: "100%",
