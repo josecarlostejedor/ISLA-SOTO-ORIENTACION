@@ -121,7 +121,7 @@ const Header = () => (
   <div className="bg-white border-b border-gray-100 py-4 px-6 text-center shadow-sm">
     <div className="flex items-center justify-center gap-2 mb-1">
       <MapIcon className="w-5 h-5 text-red-800" />
-      <h1 className="text-xl font-bold tracking-tight text-gray-900 uppercase">ISLA DEL SOTO</h1>
+      <h1 className="text-lg font-bold tracking-tight text-gray-900 uppercase">ISLA DEL SOTO-PARQUE ALDEHUELA</h1>
     </div>
     <p className="text-xs font-medium text-gray-500 tracking-widest uppercase">IES LUCÍA DE MEDRANO</p>
   </div>
@@ -299,8 +299,12 @@ export default function App() {
     setSubmissionStatus("SUBMITTING");
     try {
       // Calculate split times relative to start
-      const splits = raceResult.balizaTimes.map(time => {
-        const diff = Math.floor((time - startTime!) / 1000);
+      // Use a fallback to empty array if balizaTimes is missing (for old saved results)
+      const times = raceResult.balizaTimes || [];
+      const splits = times.map(time => {
+        // If startTime is missing, we can't calculate exact splits, so we return "--:--:--"
+        if (!startTime) return "--:--:--";
+        const diff = Math.floor((time - startTime) / 1000);
         return formatTime(diff);
       });
 
@@ -395,7 +399,7 @@ export default function App() {
     
     doc.setFontSize(14);
     doc.setFont("helvetica", "normal");
-    doc.text("IES LUCÍA DE MEDRANO - ISLA DEL SOTO", pageWidth / 2, 30, { align: "center" });
+    doc.text("IES LUCÍA DE MEDRANO - ISLA DEL SOTO-PARQUE ALDEHUELA", pageWidth / 2, 30, { align: "center" });
     
     doc.setFontSize(10);
     doc.setFont("helvetica", "italic");
@@ -484,8 +488,13 @@ export default function App() {
       }
       
       const isCorrect = normalizeString(code) === normalizeString(selectedRoute.codes[index]);
-      const splitTimeRaw = results.balizaTimes[index] - startTime;
-      const splitTime = formatTime(Math.floor(splitTimeRaw / 1000));
+      
+      // Safety check for balizaTimes (for old saved results)
+      let splitTime = "--:--:--";
+      if (results.balizaTimes && results.balizaTimes[index] && startTime) {
+        const splitTimeRaw = results.balizaTimes[index] - startTime;
+        splitTime = formatTime(Math.floor(splitTimeRaw / 1000));
+      }
       
       doc.text(`Baliza ${index + 1}`, margin + 5, yPos + 6);
       doc.text(code || "-", margin + col1Width + 5, yPos + 6);
@@ -607,7 +616,7 @@ export default function App() {
           {/* Overlay Text */}
           <div className="absolute bottom-6 left-6 text-white">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-80 mb-1">LOCALIZACIÓN</p>
-            <h3 className="text-xl font-bold">Isla del Soto, Salamanca.</h3>
+            <h3 className="text-lg font-bold">Isla del Soto-Parque Aldehuela, Salamanca.</h3>
           </div>
         </div>
 
