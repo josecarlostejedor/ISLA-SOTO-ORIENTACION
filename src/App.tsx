@@ -44,6 +44,7 @@ interface RaceResult {
   totalBalizas: number;
   borgScale: number;
   timestamp: string;
+  balizaTimes: number[]; // Timestamps for each beacon found
 }
 
 // --- Constants ---
@@ -151,6 +152,7 @@ export default function App() {
   const [selectedRoute, setSelectedRoute] = useState<Route | null>(null);
   const [currentBaliza, setCurrentBaliza] = useState(1);
   const [balizaCodes, setBalizaCodes] = useState<string[]>([]);
+  const [balizaTimes, setBalizaTimes] = useState<number[]>([]);
   const [currentCode, setCurrentCode] = useState("");
   const [startTime, setStartTime] = useState<number | null>(null);
   const [endTime, setEndTime] = useState<number | null>(null);
@@ -178,6 +180,7 @@ export default function App() {
         if (state.startTime) setStartTime(state.startTime);
         if (state.currentBaliza) setCurrentBaliza(state.currentBaliza);
         if (state.balizaCodes) setBalizaCodes(state.balizaCodes);
+        if (state.balizaTimes) setBalizaTimes(state.balizaTimes);
         if (state.endTime) setEndTime(state.endTime);
         if (state.results) setResults(state.results);
       } catch (e) {
@@ -195,6 +198,7 @@ export default function App() {
       startTime,
       currentBaliza,
       balizaCodes,
+      balizaTimes,
       endTime,
       results
     };
@@ -236,6 +240,7 @@ export default function App() {
     setElapsedTime(0);
     setCurrentBaliza(1);
     setBalizaCodes([]);
+    setBalizaTimes([]);
     setCurrentCode("");
     setScreen("RACE");
     
@@ -249,6 +254,7 @@ export default function App() {
       screen: "RACE",
       currentBaliza: 1,
       balizaCodes: [],
+      balizaTimes: [],
       results: null
     }));
   };
@@ -262,19 +268,23 @@ export default function App() {
     setEndTime(null);
     setResults(null);
     setBalizaCodes([]);
+    setBalizaTimes([]);
     setCurrentBaliza(1);
     setElapsedTime(0);
   };
 
   const handleNextBaliza = () => {
+    const now = Date.now();
     const newCodes = [...balizaCodes, currentCode];
+    const newTimes = [...balizaTimes, now];
     setBalizaCodes(newCodes);
+    setBalizaTimes(newTimes);
     setCurrentCode("");
     
     if (currentBaliza < (selectedRoute?.balizas || 7)) {
       setCurrentBaliza(currentBaliza + 1);
     } else {
-      setEndTime(Date.now());
+      setEndTime(now);
       setScreen("BORG_SCALE");
     }
   };
@@ -342,6 +352,7 @@ export default function App() {
       totalBalizas: selectedRoute.balizas,
       borgScale,
       timestamp: new Date().toLocaleString(),
+      balizaTimes,
     };
 
     setResults(raceResult);
@@ -433,17 +444,20 @@ export default function App() {
     yPos += 10;
 
     // Table Header
-    const col1Width = 60;
-    const col2Width = 60;
+    const col1Width = 45;
+    const col2Width = 45;
+    const col3Width = 35;
+    const col4Width = 45;
     
     doc.setFillColor(16, 185, 129); // Emerald-500
     doc.rect(margin, yPos, contentWidth, 10, "F");
     
     doc.setTextColor(255, 255, 255);
-    doc.setFontSize(10);
-    doc.text("Descripción de la Baliza", margin + 5, yPos + 7);
-    doc.text("Código ingresado", margin + col1Width + 5, yPos + 7);
+    doc.setFontSize(9);
+    doc.text("Descripción", margin + 5, yPos + 7);
+    doc.text("Código", margin + col1Width + 5, yPos + 7);
     doc.text("Resultado", margin + col1Width + col2Width + 5, yPos + 7);
+    doc.text("Tiempo (Parcial)", margin + col1Width + col2Width + col3Width + 5, yPos + 7);
     
     yPos += 10;
     doc.setTextColor(31, 41, 55);
@@ -457,6 +471,8 @@ export default function App() {
       }
       
       const isCorrect = normalizeString(code) === normalizeString(selectedRoute.codes[index]);
+      const splitTimeRaw = results.balizaTimes[index] - startTime;
+      const splitTime = formatTime(Math.floor(splitTimeRaw / 1000));
       
       doc.text(`Baliza ${index + 1}`, margin + 5, yPos + 6);
       doc.text(code || "-", margin + col1Width + 5, yPos + 6);
@@ -470,6 +486,8 @@ export default function App() {
       }
       
       doc.setTextColor(31, 41, 55);
+      doc.text(splitTime, margin + col1Width + col2Width + col3Width + 5, yPos + 6);
+      
       yPos += 8;
       
       // Check for page break
@@ -1048,6 +1066,7 @@ export default function App() {
                 setEndTime(null);
                 setElapsedTime(0);
                 setBalizaCodes([]);
+                setBalizaTimes([]);
                 setCurrentBaliza(1);
                 setCurrentCode("");
                 
@@ -1062,7 +1081,8 @@ export default function App() {
                     startTime: null,
                     endTime: null,
                     currentBaliza: 1,
-                    balizaCodes: []
+                    balizaCodes: [],
+                    balizaTimes: []
                   }));
                 }
               }}
