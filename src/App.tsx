@@ -298,6 +298,12 @@ export default function App() {
   const submitToGoogleSheets = async (raceResult: RaceResult) => {
     setSubmissionStatus("SUBMITTING");
     try {
+      // Calculate split times relative to start
+      const splits = raceResult.balizaTimes.map(time => {
+        const diff = Math.floor((time - startTime!) / 1000);
+        return formatTime(diff);
+      });
+
       const response = await fetch("/api/submit-results", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -314,7 +320,14 @@ export default function App() {
           puntuacion: ((raceResult.hits / raceResult.totalBalizas) * 10).toFixed(1),
           score: ((raceResult.hits / raceResult.totalBalizas) * 10).toFixed(1),
           puntuacion_total: ((raceResult.hits / raceResult.totalBalizas) * 10).toFixed(1),
-          Puntuacion: ((raceResult.hits / raceResult.totalBalizas) * 10).toFixed(1)
+          Puntuacion: ((raceResult.hits / raceResult.totalBalizas) * 10).toFixed(1),
+          
+          // NEW: Split times
+          tiemposParciales: splits.join(", "),
+          ...splits.reduce((acc, time, idx) => {
+            acc[`baliza${idx + 1}`] = time;
+            return acc;
+          }, {} as Record<string, string>)
         }),
       });
       const data = await response.json();
